@@ -1,0 +1,18 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //简化代码,用来生成包名,依赖,类名等等
+    implementation 'com.squareup:javapoet:1.11.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation project(':lib-annotations')
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
+//指定编译的编码
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+}
